@@ -12,10 +12,12 @@ pipeline {
         container('maven') {
           sh 'echo MAVEN_CONTAINER_ENV_VAR = ${CONTAINER_ENV_VAR}'
           sh 'mvn -version'
+          sh 'docker ps'
         }
-        container('busybox') {
-          sh 'echo BUSYBOX_CONTAINER_ENV_VAR = ${CONTAINER_ENV_VAR}'
-          sh '/bin/busybox'
+        container('docker') {
+          sh 'echo DOCKER_CONTAINER_ENV_VAR = ${CONTAINER_ENV_VAR}'
+          sh 'docker --version'
+          sh 'docker ps'
         }
       }
     }
