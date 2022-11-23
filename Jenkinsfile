@@ -12,7 +12,6 @@ pipeline {
         container('maven') {
           sh 'echo MAVEN_CONTAINER_ENV_VAR = ${CONTAINER_ENV_VAR}'
           sh 'mvn -version'
-          sh 'docker ps'
         }
         container('docker') {
           sh 'echo DOCKER_CONTAINER_ENV_VAR = ${CONTAINER_ENV_VAR}'
