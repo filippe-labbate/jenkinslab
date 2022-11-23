@@ -18,11 +18,18 @@ spec:
     env:
     - name: CONTAINER_ENV_VAR
       value: maven
-  - name: busybox
-    image: busybox
+  - name: docker
+    image: docker:dind
     command:
     - cat
     tty: true
     env:
     - name: CONTAINER_ENV_VAR
-      value: busybox
+      value: docker
+    volumeMounts:
+    - mountPath: /var/run/docker.sock
+      name: docker-sock
+  volumes:
+  - name: docker-sock
+    hostPath:
+      path: /var/run/docker.sock
